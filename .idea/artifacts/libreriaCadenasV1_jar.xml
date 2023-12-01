@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="libreriaCadenasV1:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/libreriaCadenasV1_jar</output-path>
+    <root id="archive" name="libreriaCadenas.jar">
+      <element id="module-output" name="libreriaCadenas" />
+    </root>
+  </artifact>
+</component>
