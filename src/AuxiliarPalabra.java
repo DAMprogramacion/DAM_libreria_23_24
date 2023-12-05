@@ -4,14 +4,15 @@
  * @version 1.0.0
  */
 public class AuxiliarPalabra {
+    private AuxiliarPalabra() {}
     /**
-     * Método que devuelve el número de letras de una palabra</br>
+     * Método que devuelve el número de letras de una palabra<br/>
      * -1 si la cadena es null
      * ejemplo hola devuelve 4
      * @param cadena a analizar
      * @return el nº de letras
      */
-    public static int obtenerNumeroDeLetras(String cadena) {
+        public static int obtenerNumeroDeLetras(String cadena) {
         if (cadena == null)
             return -1;
         return cadena.length();
@@ -114,18 +115,47 @@ public class AuxiliarPalabra {
             return null;
         return cadena1.equalsIgnoreCase(cadena2);
     }
+
+    /**
+     * <p>Método que nos dice si una clave es segura o no</p>
+     * <p>Clave segura es aquella que tiene mas de cuatro caracteres</p>
+     * <p>por lo menos una minúscula, por lo menos una mayúscula</p>
+     * <p>por los menos un número y por lo menos un caracter no alfanumérico</p>
+     * @param clave a analizar
+     * @return si es o no una clave segura.
+     */
     public static Boolean chequearClaveSegura(String clave) {
         if (clave == null)
             return null;
-        return tieneLongitudCorrecta(clave) && tieneMayuscula(clave);
+        return tieneLongitudCorrecta(clave) && tieneMayuscula(clave)
+                && tieneMinuscula(clave) && tieneNumero(clave)
+                && tieneNoAlfaNumerico(clave);
     }
 
-    public static boolean tieneMayuscula(String clave) {
+    private static boolean tieneNoAlfaNumerico(String clave) {
+        for (int i = 0; i < clave.length(); i++) {
+            char caracter = clave.toLowerCase().charAt(i);
+            if ( !(tieneNumero(caracter + "") || tieneMinuscula(caracter + "")) ){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static boolean tieneNumero(String clave) {
+        return clave.matches(".*[0-9].*");
+    }
+
+    private static boolean tieneMinuscula(String clave) {
+        return clave.matches(".*[a-zñ].*");
+    }
+
+    private static boolean tieneMayuscula(String clave) {
         return clave.matches(".*[A-ZÑ].*");
 
     }
 
-    static boolean tieneLongitudCorrecta(String clave) {
+    private static boolean tieneLongitudCorrecta(String clave) {
         return clave.length() > 4;
     }
 

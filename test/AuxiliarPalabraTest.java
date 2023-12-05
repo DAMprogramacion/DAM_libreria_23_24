@@ -81,7 +81,7 @@ class AuxiliarPalabraTest {
         assertTrue(AuxiliarPalabra.sonPalabrasIguales("juan", "JUAN"));
     }
 
-    @Test
+   /* @Test
     void tieneLongitudCorrecta() {
         assertTrue(AuxiliarPalabra.tieneLongitudCorrecta("hambre"));
         assertFalse(AuxiliarPalabra.tieneLongitudCorrecta("hola"));
@@ -90,5 +90,48 @@ class AuxiliarPalabraTest {
 
     @Test
     void tieneMayuscula() {
+        assertFalse(AuxiliarPalabra.tieneMayuscula("aaaaa"));
+        assertTrue(AuxiliarPalabra.tieneMayuscula("A"));
+        assertTrue(AuxiliarPalabra.tieneMayuscula("12A?Ñ"));
+        assertFalse(AuxiliarPalabra.tieneMayuscula("123=)"));
+    }
+
+    @Test
+    void tieneMinuscula() {
+        assertTrue(AuxiliarPalabra.tieneMinuscula("aaaaa"));
+        assertFalse(AuxiliarPalabra.tieneMinuscula("A"));
+        assertFalse(AuxiliarPalabra.tieneMinuscula("12A?Ñ"));
+        assertFalse(AuxiliarPalabra.tieneMinuscula("123=)"));        assertFalse(AuxiliarPalabra.tieneMayuscula("123=)"));
+        assertTrue(AuxiliarPalabra.tieneMinuscula("12ñ3=)"));
+    }
+
+    @Test
+    void tieneNumero() {
+        assertFalse(AuxiliarPalabra.tieneNumero("aaaaa"));
+        assertFalse(AuxiliarPalabra.tieneNumero("A"));
+        assertTrue(AuxiliarPalabra.tieneNumero("12A?Ñ"));
+        assertTrue(AuxiliarPalabra.tieneNumero("az123=)"));        assertFalse(AuxiliarPalabra.tieneMayuscula("123=)"));
+        assertTrue(AuxiliarPalabra.tieneNumero("12ñ3=)A"));
+    }
+
+    @Test
+    void tieneNoAlfaNumerico() {
+        assertFalse(AuxiliarPalabra.tieneNoAlfaNumerico("aaaaa"));
+        assertFalse(AuxiliarPalabra.tieneNoAlfaNumerico("A"));
+        assertTrue(AuxiliarPalabra.tieneNoAlfaNumerico("12A?Ñ"));
+        assertTrue(AuxiliarPalabra.tieneNoAlfaNumerico("az123=)"));        assertFalse(AuxiliarPalabra.tieneMayuscula("123=)"));
+        assertTrue(AuxiliarPalabra.tieneNoAlfaNumerico("12ñ3=)A"));
+        assertTrue(AuxiliarPalabra.tieneNoAlfaNumerico("^"));
+    }
+*/
+    @Test
+    void chequearClaveSegura() {
+        assertFalse(AuxiliarPalabra.chequearClaveSegura("aaaaa"));
+        assertFalse(AuxiliarPalabra.chequearClaveSegura("A12a55"));
+        assertFalse(AuxiliarPalabra.chequearClaveSegura("12A?Ñ"));
+        assertFalse(AuxiliarPalabra.chequearClaveSegura("az123=)"));
+        assertFalse(AuxiliarPalabra.chequearClaveSegura("123=)"));
+        assertTrue(AuxiliarPalabra.chequearClaveSegura("12ñ3=)A"));
+        assertFalse(AuxiliarPalabra.chequearClaveSegura("^"));
     }
 }
